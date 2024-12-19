@@ -1,8 +1,9 @@
 from LibUtils.ConfigUtils import ConfigUtils
 from LibUtils.SingletonInstane import SingletonInstane
 
-CONFIG_PATH = "config/application.conf"
+# CONFIG_PATH = "config/application.conf"
 # CONFIG_PATH = "C:\\D\\project2\\infra-glue-conditions-replayer\\config\\application.conf"
+CONFIG_PATH = "D:\\source\\git\\Replayer\\config\\application.conf"
 
 
 
