@@ -30,6 +30,7 @@ class cProcessCate(SingletonInstane):
     def __registCateInfo(self):
         self.cateRegActQueue[E_CATE.MESSAGE_BRIDGE]=lambda: cProcessCate.instance().RegisterMessageBridge()
         self.cateRegActQueue[E_CATE.DOWNLOADER] = lambda: cProcessCate.instance().RegisterDownloader()
+        self.cateRegActQueue[E_CATE.REST_SERVER]=lambda: cProcessCate.instance().RegisterRestServer()
 
     def RegisterMessageBridge(self):
         self.setCate3(E_CATE.MESSAGE_BRIDGE, E_CATE.E_MESSAGE_BRIDGE.COMMON,
@@ -101,6 +102,11 @@ class cProcessCate(SingletonInstane):
         self.setCate3(E_CATE.DOWNLOADER, E_CATE.E_DOWNLOADER.CAMERA,
                       E_CATE.E_DOWNLOADER.E_CAMERA.E_AM20_FRONT_LEFT_FRONT[E_CATE_META_ELE.NAME],
                       E_CATE.E_DOWNLOADER.E_CAMERA.E_AM20_FRONT_LEFT_FRONT[E_CATE_META_ELE.LAMBDA])
+
+    def RegisterRestServer(self):
+        self.setCate3(E_CATE.REST_SERVER, E_CATE.E_REST_SERVER.COMMON,
+                      E_CATE.E_REST_SERVER.E_COMMON.E_REST_SERVER[E_CATE_META_ELE.NAME],
+                      E_CATE.E_REST_SERVER.E_COMMON.E_REST_SERVER[E_CATE_META_ELE.LAMBDA])
 
     def _extendCate1(self, _cate1):
         return CollectionUtils.DictExtends(self.cateQueue, _cate1, lambda: {})

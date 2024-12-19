@@ -1,11 +1,8 @@
-# from App.Downloader.ObjectStorage.cMinioDownloaderProcess import cDownloaderMinioProcess
-# from App.Category.cCateGory import cProcessCate
-# from App.Category.cCateGory import cProcessCate
-# from App.Category.cCateGory import cAfa
 from App.Category.eSensor import E_LIDAR, E_CAMERA, E_TIMER
 from App.MessageBridge.Processes.cMessageBridgeProcess import cMessageBridgeProcess
 from App.Downloader.Manager.cDownloaderManager import cDownloaderManager
 from App.Downloader.ObjectStorage.cDownloaderModule import cDownloaderModule
+from App.Rest.cSocketIOProcess import cSocketIOProcess
 
 from App.cDefine import IENUM
 
@@ -18,6 +15,7 @@ class E_CATE_META_ELE(IENUM):
 class E_CATE(IENUM):
     MESSAGE_BRIDGE="MESSAGE_BRIDGE"
     DOWNLOADER = "DOWNLOADER"
+    REST_SERVER = "REST_SERVER"
 
     class E_MESSAGE_BRIDGE(IENUM):
         COMMON = "COMMON"
@@ -91,6 +89,12 @@ class E_CATE(IENUM):
             AM20_FRONT_LEFT_FRONT = E_CAMERA.AM20_FRONT_LEFT_FRONT ##  "AM20_FRONT_LEFT_FRONT"
             E_AM20_FRONT_LEFT_FRONT = (
                 AM20_FRONT_LEFT_FRONT, lambda _app_name,_process_name: cDownloaderModule(_app_name, _process_name))
+
+    class E_REST_SERVER(IENUM):
+        COMMON = "COMMON"
+        class E_COMMON(IENUM):
+            REST_SERVER = "REST_SERVER"
+            E_REST_SERVER = (REST_SERVER, lambda _app_name, _process_name: cSocketIOProcess(_app_name,_process_name))
 
 
 
